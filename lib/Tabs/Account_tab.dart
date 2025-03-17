@@ -285,7 +285,19 @@ class _AccountTabState extends State<AccountTab> {
                                 ),
                               ),
                               OutlinedButton(
-                                onPressed: () => openSetPinDialog(context,pinController),
+                                // onPressed: () async {
+                                //   final pin = await Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => PinEntryScreen(controller: pinController),
+                                //     ),
+                                //   );
+                                //
+                                //   if (pin != null) {
+                                //     pinController.text = pin; // Store the entered PIN
+                                //   }
+                                // },
+                                onPressed: () => openPinScreen(context,pinController),
                                 style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                   backgroundColor: Color(0xFFEAEBED),
@@ -359,4 +371,5 @@ class _AccountTabState extends State<AccountTab> {
       ),
     );
   }
+
 }

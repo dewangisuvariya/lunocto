@@ -158,7 +158,7 @@ class _AccountScreenState extends State<AccountScreen> with SingleTickerProvider
       ),
           SizedBox(height: screenHeight*0.005),
           Text(
-            capitalizeWords(userData.studentName),  // Update with the user's name
+            capitalizeWords(userData.studentName ?? ""),  // Update with the user's name
            style: TextStyle(
             color: Colors.white,
             fontSize: screenWidth * 0.05,

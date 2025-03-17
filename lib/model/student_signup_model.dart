@@ -1,6 +1,7 @@
 import 'dart:io';
 
 class Student {
+  int? id;
   final String studentName;
   final String firstName;
   final String surname;
@@ -16,6 +17,7 @@ class Student {
   final String passwordConfirmation;
 
   Student({
+    this.id,
     required this.studentName,
     required this.firstName,
     required this.surname,
@@ -31,8 +33,8 @@ class Student {
     required this.passwordConfirmation,
   });
 
-  Map<String, String> toJson() {
-    return {
+  Map<String, String> toJson() => {
+      //"id":id,
       "student_name": studentName,
       "first_name": firstName,
       "surname": surname,
@@ -47,6 +49,5 @@ class Student {
       "name_of_provider": provider,
       "password_confirmation": passwordConfirmation,
     };
-  }
 }
 

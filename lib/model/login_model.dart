@@ -2,16 +2,16 @@
 class LoginModel {
   int? id;
   String? studentImage;
-  String studentName;
-  String firstName;
-  String surname;
-  String dateOfBirth;
-  String uniqueID;
-  String password;
+  String? studentName;
+  String? firstName;
+  String? surname;
+  String? dateOfBirth;
+  String? uniqueID;
+  String? password;
   String? verificationCode;
-  String pin;
-  String email;
-  String emergencyContact;
+  String? pin;
+  String? email;
+  String? emergencyContact;
   String? telephone;
   String? shareEntriesToAdmin;
   String? messageFromAdminEmail;
@@ -28,8 +28,8 @@ class LoginModel {
   String? yourPrioritiesText;
   String? phoneNumber;
   String? pushNotification;
-  String relationshipToThisPerson;
-  String nameOfProvider;
+  String? relationshipToThisPerson;
+  String? nameOfProvider;
   String? createdAt;
   String? updatedAt;
    String? passwordConfirmation;
@@ -37,16 +37,16 @@ class LoginModel {
   LoginModel({
      this.id,
     this.studentImage,
-    required this.studentName,
-    required this.firstName,
-    required this.surname,
-    required this.dateOfBirth,
-    required this.uniqueID,
-    required this.password,
+    this.studentName,
+     this.firstName,
+     this.surname,
+     this.dateOfBirth,
+     this.uniqueID,
+     this.password,
     this.verificationCode,
-    required this.pin,
-    required this.email,
-    required this.emergencyContact,
+     this.pin,
+     this.email,
+     this.emergencyContact,
     this.telephone,
     this.shareEntriesToAdmin,
     this.messageFromAdminEmail,
@@ -63,8 +63,8 @@ class LoginModel {
     this.yourPrioritiesText,
     this.phoneNumber,
     this.pushNotification,
-    required this.relationshipToThisPerson,
-    required this.nameOfProvider,
+     this.relationshipToThisPerson,
+     this.nameOfProvider,
      this.createdAt,
      this.updatedAt,
     this.passwordConfirmation,

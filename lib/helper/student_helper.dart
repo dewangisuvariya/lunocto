@@ -39,9 +39,11 @@ class ApiHelper {
       print("Response Code: ${response.statusCode}");
       print("Response Body: ${response.body}");
       final Map<String, dynamic> responseData = jsonDecode(response.body);
+      int? studentId = responseData["student"]["id"];
       if (response.statusCode == 201) {
         // Data submitted successfully
-        return {'status': 'success', 'message': responseData["message"] ?? "Student created successfully!"};
+        print("$studentId ");
+        return {'status': 'success', 'message': responseData["message"] ?? "Student created successfully!","studentId": studentId,};
         return {};
       } else if (response.statusCode == 404) {
         // Show custom alert dialog for 404 error

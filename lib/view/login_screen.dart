@@ -88,39 +88,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response['status'] == 'success') {
       LoginModel userData = LoginModel.fromJson(response['student']);
 
-      // var studentData = response['student'];
-      // String userName = studentData['student_name'] ?? '';
-      // String email = studentData['email'] ?? '';
-      // String emergencyContact = studentData['emergency_contact'] ?? '';
-      // String firstName= studentData['first_name'] ?? '';
-      // String  surName= studentData['surname'] ?? '';
-      // String dob= studentData['date_of_birth'] ?? '';
-      // String uniqueId= studentData['unique_id'] ?? '';
-      // String  password= studentData['password'] ?? '';
-      // String nameOfProvider= studentData['name_of_provider'] ?? '';
-      // String confirmPassword= studentData['password_confirmation'] ?? '';
-      // String  pin= studentData['pin'] ?? '';
-      // String relationshipToThisPerson= studentData['relationship_to_this_person'] ?? '';
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => HomeScreen(
-      //       userName: userName,
-      //       email: email,
-      //       emergencyContact: emergencyContact,
-      //         firstName:firstName,
-      //         surName:surName,
-      //         dob:dob,
-      //         uniqueId:uniqueId,
-      //         password:password,
-      //         nameOfProvider:nameOfProvider,
-      //         confirmPassword:confirmPassword,
-      //         pin:pin,
-      //         relationshipToThisPerson:relationshipToThisPerson,
-      //       telephone:"",
-      //     ),
-      //   ),
-      // );
       Navigator.pushNamed(
         context,
         'WelcomeScreen',
@@ -264,7 +231,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: screenHeight * 0.020),
                   CustomButton(
                     text: "LOGIN WITH PIN",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("LoginWithPin");
+                    },
                     backgroundColor: Color(0xFFEAEBED), // Light gray
                     textColor: Colors.black,
                   ),

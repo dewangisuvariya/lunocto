@@ -113,21 +113,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  capitalizeWords(loginModel.studentName),
+                                  capitalizeWords(loginModel.studentName ?? ""),
                                   style: TextStyle(fontSize: screenHeight*0.020, color: Colors.white, fontFamily: 'Montserrat',
                                       letterSpacing: 1,
                                       fontWeight: FontWeight.w800),
                                 ),
                                 SizedBox(height: 02,),
                                 Text(
-                                  loginModel.emergencyContact,
+                                  loginModel.emergencyContact?? "",
                                   style:  TextStyle(fontSize:screenHeight*0.016, color: Colors.white, fontFamily: 'Montserrat',
                                       letterSpacing: 1,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 SizedBox(height: 02,),
                                 Text(
-                                  loginModel.email,
+                                  loginModel.email?? "",
                                   style:  TextStyle(fontSize: screenHeight*0.014, color: Colors.white, fontFamily: 'Montserrat',
                                       letterSpacing: 1,
                                       fontWeight: FontWeight.w500),

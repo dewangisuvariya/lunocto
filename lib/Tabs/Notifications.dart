@@ -337,7 +337,7 @@ class _NotificationsTabState extends State<NotificationsTab> {
                                         wordSpacing: 1.7,
                                         fontFamily: "Montserrat",
                                       ),),
-                                      Text(widget.userData.emergencyContact,),
+                                      Text(widget.userData.emergencyContact ??"",),
                                     ],
                                   ),
                                 ),

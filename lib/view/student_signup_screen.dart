@@ -9,11 +9,14 @@ import '../global/custom_password_field.dart';
 import '../global/custom_textfield.dart';
 import '../global/open_set_pinDialog.dart';
 import '../helper/student_helper.dart';
+import '../model/login_model.dart';
+import '../model/login_with_pin.dart';
 import '../model/student_signup_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 class StudentSignupScreen extends StatefulWidget {
-  const StudentSignupScreen({super.key});
+
+  const StudentSignupScreen( {super.key});
 
   @override
   State<StudentSignupScreen> createState() => _StudentSignupScreenState();
@@ -136,6 +139,7 @@ class _StudentSignupScreenState extends State<StudentSignupScreen> {
         });
 
         Student student = Student(
+
           studentName: userNameInputController.text,
           firstName: firstNameInputController.text,
           surname: surNameInputController.text,
@@ -161,9 +165,13 @@ class _StudentSignupScreenState extends State<StudentSignupScreen> {
         });
 
         if (response['status'] == 'success') {
+          int studentId = response['studentId'];
           // Show success message with green background
           Global().showSnackBar(context, "Data submitted successfully!", status: "success");
-          Navigator.of(context).pushNamed("LoginScreen");
+
+          LoginModel? loginResponse = await ApiHelper.loginWithPin(studentId, pinInputController.text);
+
+          Navigator.of(context).pushNamed("LoginScreen", arguments: {"studentId": studentId},);
           // Navigate to the next screen or perform any other action
         } else {
           // Show failure message with red background
@@ -219,40 +227,31 @@ class _StudentSignupScreenState extends State<StudentSignupScreen> {
                 SizedBox(height: 20,),
                 Row(
                   children: [
+                    // Back button aligned to the left
                     Expanded(
-                      flex: 3,
-                      child: Container(height: 70,
-              width: 200,
-              color: Color(0xFF071330),
-                        //color: Colors.amber,
-              alignment: Alignment(-0.8, 0.2),
-
-                        child: GestureDetector(child: Icon(Icons.arrow_back,color: Colors.white,size: 25,),
-                        //   onTap:  () => showDialog(
-                        //
-                        //   context: context,
-                        //   barrierDismissible: false,
-                        //   builder: (BuildContext context) {
-                        //     Color dialogColor = backgroundColor == Color(0xFF071330) ? Colors.white : Color(0xFF071330);
-                        //     return ExitDialog(backgroundColor: dialogColor,);
-                        //   },
-                        // ),),
-                          onTap: (){
+                      child: GestureDetector(
+                        child: Icon(Icons.arrow_back, color: Colors.white, size: 25),
+                        onTap: () {
                           Navigator.of(context).pop();
-                          }),
-          ),
+                        },
+                      ),
                     ),
+
+                    // Centering the image container
                     Expanded(
-                      flex: 6,
+                      flex: 2, // Give more space to the image to center it properly
                       child: Container(
-                        alignment: Alignment(-0.9, 0.2),
-                        height:screenHeight * 0.13,width:screenHeight * 0.13,
-                        child: Image(
-                          image: AssetImage("assets/images/lunOcto_Logo_BG1.png"),
+                        alignment: Alignment.center, // Ensures the image is centered within the container
+                        child: Image.asset(
+                          "assets/images/lunOcto_Logo_BG1.png",
+                          height: screenHeight * 0.13,
+                          width: screenHeight * 0.13,
                         ),
                       ),
                     ),
 
+                    // Empty Expanded to balance the layout
+                    Expanded(child: SizedBox()),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.010),
@@ -419,7 +418,19 @@ class _StudentSignupScreenState extends State<StudentSignupScreen> {
                         fontWeight: FontWeight.w600
                     ),),
                     ElevatedButton(
-                      onPressed: () => openSetPinDialog(context, pinInputController),
+                      // onPressed: () async {
+                      //   final pin = await Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => PinEntryScreen(controller: pinInputController),
+                      //     ),
+                      //   );
+                      //
+                      //   if (pin != null) {
+                      //     pinInputController.text = pin; // Store the entered PIN
+                      //   }
+                      // },
+                      onPressed: () => openPinScreen(context, pinInputController),
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                           backgroundColor:Colors.white,

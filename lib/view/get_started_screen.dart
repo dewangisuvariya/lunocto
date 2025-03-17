@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../global/ResponsiveButtonWidget.dart';
@@ -140,7 +141,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                         ),
                         child: Text(
                           "SIGN IN",
-                          style: TextStyle(fontSize: labelFontSize, color: Colors.black, fontFamily: 'Montserrat',
+                          style: TextStyle(fontSize: 10, color: Colors.black, fontFamily: 'Montserrat',
                               letterSpacing: 1,
                               fontWeight: FontWeight.w600),
                         ),
@@ -162,9 +163,11 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                           minimumSize: Size(screenHeight*0.60, 45),
                           fixedSize: Size(screenHeight*0.60, 50),
                         ),
-                        child: Text(
+                        child: AutoSizeText(
                           "CREATE ACCOUNT",
-                          style: TextStyle(fontSize: buttonFonts, color: Colors.white, fontFamily: 'Montserrat',
+                          maxFontSize: 10,
+                          minFontSize: 8,
+                          style: TextStyle(fontSize: 10, color: Colors.white, fontFamily: 'Montserrat',
                               letterSpacing: 1,
                               fontWeight: FontWeight.w600),
                         ),
@@ -172,7 +175,7 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                     ),
                   ],
                 ),
-              // ResponsiveButtonWidget(aspectRatio: aspectRatio),
+              //ResponsiveButtonWidget(aspectRatio: aspectRatio),
               SizedBox(height: screenHeight * 0.040),
               Text(
                 "Interested in using our service?",

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lunocto/model/login_model.dart';
 import 'package:lunocto/view/get_started_screen.dart';
 import 'package:lunocto/view/home_screen.dart';
 import 'package:lunocto/view/login_screen.dart';
+import 'package:lunocto/view/login_with_pin.dart';
 import 'package:lunocto/view/profile_display_screens.dart';
 import 'package:lunocto/view/splash_screen.dart';
 import 'package:lunocto/view/student_signup_screen.dart';
@@ -36,12 +38,13 @@ class MyApp extends StatelessWidget {
       home: GetStartedScreen(),
       initialRoute: "GetStartedScreen",
       routes: {
-        "LoginScreen": (context) => LoginScreen(),
-         "StudentSignupScreen": (context) => StudentSignupScreen(),
+          "LoginScreen": (context) => LoginScreen(),
+          "StudentSignupScreen": (context) => StudentSignupScreen( ),
          "SplashScreen":(context)=>SplashScreen(),
          "HomeScreen":(context)=>HomeScreen(),
           "GetStartedScreen":(context)=>GetStartedScreen(),
           "WelcomeScreen":(context)=>WelcomeScreen(),
+          "LoginWithPin":(context)=>LoginWithPin(),
          //"AccountScreen":(context)=>AccountScreen(userData: ,),
       }, // Initial screen
     );
